@@ -8,7 +8,7 @@ const URL_DB = config.db.mongodbURL;
 
 export const initDb = async () => {
     try {
-        // console.log("URL_DB", URL_DB)
+         console.log("URL_DB", URL_DB)
         await mongoose.connect(URL_DB);
         console.log('Database conected 🚀');
     } catch (error) {

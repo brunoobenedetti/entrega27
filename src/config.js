@@ -15,3 +15,4 @@ export default {
         secretGithub: process.env.SECRET_GITHUB
     }
 }
+
