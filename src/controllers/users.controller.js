@@ -9,6 +9,7 @@ export default class UsersController {
     }
 
     static async create(data) {
+        // console.log("data", data)
         const user = await UsersService.create(data)
         return user;
     }
@@ -23,9 +24,9 @@ export default class UsersController {
 
     static async getByMail(email) {
         const users = await UsersService.findAll({ email })
-        if (!users.length) {
-            throw new Error(`El usuario con el email ${email} no existe en la base de datos`)
-        }
+        // if (!users.length) {
+        //     throw new Error(`Correo o password invalidos`)
+        // }
         // console.log("Users", users)
         return users[0];
     }
@@ -39,12 +40,16 @@ export default class UsersController {
 
     static async updatePassword(email, newPassword) {
         console.log("Actualizando clave del usuario");
+
         const users = await UsersController.get({ email })
-        if (users.length) {
+
+
+        if (!users.length) {
             throw new Error(`El mail proporcionado no existe en la DB`)
         }
         await UsersService.updateById(users[0]._id, { password: createHash(newPassword) })
         console.log("Clave correctamente actualizada")
+
     }
 
     static async deleteById(uid) {

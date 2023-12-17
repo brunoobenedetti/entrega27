@@ -9,8 +9,24 @@
 </head>
 
 <body>
+    
     <main class="container">
         <article>
+            <form action="/api/sessions/login" method="post">
+              <header>
+                <h1>Login</h1>
+              </header>
+              <input type="email" name="email" placeholder="Correo" required />
+              <input type="password" name="password" placeholder="Contraseña" required />
+              <a href="/recovery-password">Olvide la contraseña</a>
+              <footer>
+                <input type="submit" value="Ingresar">
+                <a href="/register" role="button">Register</a>
+                <a href="/api/sessions/github" role="button">Entrar con Github</a>
+              </footer>
+            </form>
+          </article>
+        <!-- <article>
             <form id="login-form">
                 <header>
                     <h1>Login JWT</h1>
@@ -21,7 +37,7 @@
                     <input type="submit" value="Enviar">
                 </footer>
             </form>
-        </article>
+        </article> -->
     </main>
     <script src="js/script.js"></script>
 </body>

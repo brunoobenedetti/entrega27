@@ -62,7 +62,7 @@ router.get('/:pid', async (req, res) => {
 })
 
 
-router.post('/', uploader.array('thumbnails', 4), async (req, res) => {
+router.post('/', uploader.array('thumbnails', 2), async (req, res) => {
     const { body } = req;
     const { files } = req;
     // console.log('entra a la ruta');
@@ -108,5 +108,6 @@ router.delete('/:pid', async (req, res) => {
         res.status(error.statusCode || 500).json({ message: error.message })
     }
 })
+
 
 export default router;

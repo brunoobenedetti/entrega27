@@ -64,7 +64,7 @@ const buildPageLink = (req, page, limit, sort, category) => {
 // })
 router.get('/', privateRouter, async (req, res) => {
     try {
-        const { page = 1, limit = 10, category, code, price, title, sort, stock } = req.query;
+        const { page = 1, limit = 2, category, code, price, title, sort, stock } = req.query;
         const options = {
             page,
             limit,
@@ -105,4 +105,27 @@ router.get('/', privateRouter, async (req, res) => {
 //     console.log("products", products);
 //     res.render('productsBis', { products: products.map(p => p.toJSON()) })
 // })
+
+router.get('/:pid', async (req, res) => {
+    const { pid } = req.params
+    
+    try {
+      const result = await ProductManager.getProductById(pid)
+  
+      res.render('details', {
+          _id: result._id,
+          title: result.title,
+          description: result.description,
+          code: result.code,
+          price: result.price,
+          status: result.status,
+          stock: result.stock,
+          category: result.category
+      })
+    }
+    catch (error) {
+      res.status(error.statusCode || 500).send(error.message)
+    }
+  })
+  
 export default router;

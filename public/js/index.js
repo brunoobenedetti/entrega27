@@ -155,6 +155,7 @@
     }))
 
     socket.on('listCarts', (carts) => {
+        console.log('entra');
         const container = document.getElementById('carts');
         container.innerHTML = "";
 

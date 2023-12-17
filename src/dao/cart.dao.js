@@ -1,5 +1,5 @@
 import CartModel from "../models/cart.model.js";
-
+import CartController from "../controllers/cart.controller.js";
 export default class CartDao {
 
     static async getAll() {
@@ -14,10 +14,10 @@ export default class CartDao {
         return await CartModel.findById(cid);
     }
 
-
-    static async updateCart(cartId, products) {
-        return await CartModel.findOneAndUpdate({ _id: cartId }, { $set: { products } })
+    static async updateById(cid, products) {
+        return await CartModel.findOneAndUpdate({ _id: cid }, { $set: { products } })
     }
+
 
     static async deleteById(cid) {
         return await CartModel.deleteOne({ _id: cid })

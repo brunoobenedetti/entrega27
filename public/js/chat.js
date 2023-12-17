@@ -24,7 +24,7 @@
     })
 
     function updateLogMessages(messages) {
-        console.log('messages', messages);
+        // console.log('messages', messages);
         logMessages.innerText = '';
         messages.forEach((msg) => {
             const p = document.createElement('p');

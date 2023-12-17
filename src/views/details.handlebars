@@ -1,0 +1,34 @@
+<div>
+  <a href="/api/sessions/logout" role="button">Logout</a>
+  <h1>Todos los productos</h1>
+  <div class="products_container">
+    {{#if payload}}
+      {{#each payload}}
+      <div>
+        <div class="product {{#if this.status}}green{{else}}red{{/if}}">
+          <p><strong>ID: </strong>{{this._id}}</p>
+          <p><strong>Nombre: </strong>{{this.title}}</p>
+          <p><strong>Precio: </strong>{{this.price}}</p>
+          <p><strong>Categoria: </strong>{{this.category}}</p>
+
+          <div class="product_buttons_container">
+            <a href="/products/{{this._id}}">Mas detalles</a>
+            <button id="{{this._id}}" class="button_add_to_cart" {{#unless this.status}}disabled{{/unless}}>🛒</button>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    {{else}}
+      <h3 style="text-align: center; margin: 1rem">No se encontraron resultados</h3>
+    {{/if}}
+  </div>
+
+  <div class="page_controller">
+    <a id="prev_page" href="{{prevLink}}">Anterior</a>
+    <p>{{page}}/{{totalPages}}</p>
+    <a id="next_page" href="{{nextLink}}">Siguiente</a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/products.js"></script>
